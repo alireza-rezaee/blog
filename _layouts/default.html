@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {%- include head.html -%}
+
+<body class="mnh-100vh">
+
+    {%- include header.html -%}
+
+    <main class="wrapper position-relative" aria-label="Content">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12 col-sm">
+                    <div class="mt-5"></div>
+                    {{ content }}
+                </div>
+            </div>
+        </div>
+    </main>
+
+    {%- include footer.html -%}
+
+    <!-- jQuery -->
+    <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"
+            integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+            crossorigin="anonymous"></script>
+    <script>(window.jQuery || document.write('<script src="{{ "/assets/lib/jquery/3.6.0/dist/jquery.min.js" | relative_url }}">\x3C/script>'))</script>
+
+    <!-- Twitter Bootstrap -->
+    <script src="https://unpkg.com/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <script>(bootstrap || document.write('<script src="{{ "/assets/lib/bootstrap/5.0.2/dist/js/bootstrap.bundle.min.js" | relative_url }}">\x3C/script>'))</script>
+
+    <!-- jQuery timeago -->
+    <script src="https://unpkg.com/timeago@1.6.7/jquery.timeago.js"
+            integrity="sha384-GsksDHaN27nM9MG1NsV9IPECsWOIts+Wpq92hznPS4KNEQeyOa5ChwoOJSfCbG+2"
+            crossorigin="anonymous"></script>
+    <script>((window.jQuery && jQuery.timeago) || document.write('<script src="{{ "/assets/lib/timeago/1.6.7/jquery.timeago.js" | relative_url }}">\x3C/script>'))</script>
+
+    <!-- jQuery timeago (fa) -->
+    <script src="https://unpkg.com/timeago@1.6.7/locales/jquery.timeago.fa.js"
+            integrity="sha384-KoRLLuB9R0fWSnmmIjid3KBcgtNESylDiSD14GIgfTEmkMvswToDuuHpFGu19aCr"
+            crossorigin="anonymous"></script>
+    <script>(jQuery.timeago || document.write('<script src="{{ "/assets/lib/timeago/1.6.7/locales/jquery.timeago.fa.js" | relative_url }}">\x3C/script>'))</script>
+
+    <script src="{{ "/assets/main.js" | relative_url }}"></script>
+
+    <script>
+        jQuery(document).ready(function () {
+            jQuery("time.timeago").timeago();
+        });
+    </script>
+</body>
+
+</html>

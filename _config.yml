@@ -28,7 +28,6 @@ twitter_username: AlirezaRezaeeIR
 github_username:  AlirezaRezaeeIR
 
 # Build settings
-theme: minima
 plugins:
   - jekyll-feed
 
