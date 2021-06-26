@@ -27,6 +27,8 @@ url: "https://alireza.rezaee.org" # the base hostname & protocol for your site, 
 twitter_username: AlirezaRezaeeIR
 github_username:  AlirezaRezaeeIR
 
+show_excerpts: true
+
 # Build settings
 plugins:
   - jekyll-feed

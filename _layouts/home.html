@@ -1,31 +1,76 @@
----
+﻿---
 layout: default
 ---
 
-<div>
-    {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-    {%- endif -%}
-
-    {{ content }}
-
+<div class="container my-5">
     {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
-    <ul class="post-list">
+    <div class="row masonry">
         {%- for post in site.posts -%}
-        <li>
-            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-            <span class="post-meta">{{ post.date | date: date_format }}</span>
-            <h3>
-                <a class="post-link" href="{{ post.url | relative_url }}">
-                    {{ post.title | escape }}
-                </a>
-            </h3>
-            {%- if site.show_excerpts -%}
-            {{ post.excerpt }}
-            {%- endif -%}
-        </li>
+        <div class="col-sm-6 col-lg-4 mb-4">
+            <div class="post card shadow-sm">
+                <div class="post-summary">
+                    {%- if site.show_excerpts -%}
+                    <img src="{{ post.thumbnail }}" class="card-img-top rounded-top" alt="{{ post.title | escape }}">
+                    {%- endif -%}
+                    <div class="card-body">
+                        <h2 class="card-title">{{ post.title | escape }}</h2>
+                        {%- if site.show_excerpts -%}
+                        <p class="card-text">
+                            {{ post.excerpt }}
+                        </p>
+                        {%- endif -%}
+                        <div class="text-start">
+                            <div class="pin-button position-absolute">
+                            </div>
+                            <a href="javascript:void(0)" class="position-relative btn btn-light border rounded-oval" style="z-index: 5;">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bookmark-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M4.5 2a.5.5 0 0 0-.5.5v11.066l4-2.667 4 2.667V8.5a.5.5 0 0 1 1 0v6.934l-5-3.333-5 3.333V2.5A1.5 1.5 0 0 1 4.5 1h4a.5.5 0 0 1 0 1h-4zm9-1a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1H13V1.5a.5.5 0 0 1 .5-.5z" />
+                                    <path fill-rule="evenodd" d="M13 3.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0v-2z" />
+                                </svg>
+                            </a>
+                            <a href="{{ post.url | relative_url }}" class="stretched-link btn btn-light border rounded-oval">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-book" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 0 1 8.5 2.5v11a.5.5 0 0 1-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 0 1 0 13.5v-11a.5.5 0 0 1 .276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 0 1 .22-.103 12.958 12.958 0 0 1 2.7-.869zM1 2.82v9.908c.846-.343 1.944-.672 3.074-.788 1.143-.118 2.387-.023 3.426.56V2.718c-1.063-.929-2.631-.956-4.09-.664A11.958 11.958 0 0 0 1 2.82z" />
+                                    <path fill-rule="evenodd" d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 0 0 7.5 2.5v11a.5.5 0 0 0 .854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 0 0-.799-.34 12.96 12.96 0 0 0-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0 1 15 2.82z" />
+                                </svg>
+                                بخوانید
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         {%- endfor -%}
-    </ul>
+    </div>
     {%- endif -%}
+
 </div>
+
+<!-- Masonry -->
+<script src="https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+        integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D"
+        crossorigin="anonymous"></script>
+<script>(Masonry || document.write('<script src="{{ "/assets/lib/masonry-layout/4.2.2/dist/masonry.pkgd.min.js" | relative_url }}">\x3C/script>'))</script>
+
+<!-- imagesLoaded -->
+<script src="https://unpkg.com/imagesloaded@4.1.4/imagesloaded.pkgd.min.js"
+        asp-fallback-src="/lib/imagesloaded/4.1.4/imagesloaded.pkgd.min.js"
+        asp-fallback-test="imagesLoaded"
+        integrity="sha384-YnGSHPPWEUDKMHFPOVmNP7Xyfwx5G0CHet6IoNgiX6CbFZS8gCeIfEgB1MgPwjdI" crossorigin="anonymous"></script>
+<script>(imagesLoaded || document.write('<script src="{{ "/assets/lib/imagesloaded/4.1.4/imagesloaded.pkgd.min.js" | relative_url }}">\x3C/script>'))</script>
+
+
+<script>
+    //See docs: https://masonry.desandro.com/layout.html#imagesloaded
+    var grid = document.querySelector('.masonry');
+    var msnry;
+
+    imagesLoaded(grid, function () {
+        // init Isotope after all images have loaded
+        msnry = new Masonry(grid, {
+            // options
+            percentPosition: true,
+            originLeft: false
+        });
+    });
+</script>
